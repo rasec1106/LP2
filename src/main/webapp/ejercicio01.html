@@ -8,13 +8,27 @@
 	<form>
 		<fieldset>
 			<legend>Datos Basicos</legend>
-			Nombre<br>
-			<input type="text" name="nombre" required><br> <br>Descripcion<br>
+			Nombre<br> <input type="text" name="nombre" required><br>
+			<br>Descripcion<br>
 			<textarea rows="8" cols="30" name="descripcion" required></textarea>
-			<br>
-			<br> Foto<input type="file" name="foto"><br> <input
-				type="checkbox" name="partida"> Partida <input
+			<br> <br> Foto<input type="file" name="foto"><br>
+			<input type="checkbox" name="partida"> Partida <input
 				type="checkbox" name="pago"> Pago
+		</fieldset>
+		<fieldset>
+			<legend>Datos Economicos</legend>
+			Precio <input type="text" name="precio" size="10" required>
+			&ensp;&ensp; Impuestos <select name="impuestos">
+				<option>4%</option>
+				<option>7%</option>
+				<option>16%</option>
+				<option>25%</option>
+			</select> <br><br>Promocion<br> 
+			<input type="radio" name="promocion">Ninguno<br>
+			<input type="radio" name="promocion">Transporte gratuito<br>
+			<input type="radio" name="promocion">Descuento 5%<br> 
+			<input	type="submit" value="Procesar">
+			<input type="reset"	value="Nuevo">
 		</fieldset>
 	</form>
 </body>
