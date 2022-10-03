@@ -6,8 +6,10 @@
 <meta http-equiv="Content-type" content="text/html" charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="#64d6b7">
+<font color="#fff" face="Comic Sans MS, Arial">
 <a href="ServletAlumno?tipo=listar">Listar Alumnos</a><br>
-<a href="registrartAlumno.jsp">Registrar Alumno</a>
+<a href="registrarAlumno.jsp">Registrar Alumno</a>
+</font>
 </body>
 </html>
