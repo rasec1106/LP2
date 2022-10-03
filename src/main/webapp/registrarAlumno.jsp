@@ -15,16 +15,28 @@
 				<td><input type="text" name="txt_nom" class="required"></td>
 			</tr>
 			<tr>
-				<td>Paterno:</td>
-				<td><input type="text" name="txt_pat" class="required"></td>
+				<td>Apellido:</td>
+				<td><input type="text" name="txt_ape" class="required"></td>
 			</tr>
 			<tr>
-				<td>Materno:</td>
-				<td><input type="text" name="txt_mat" class="required"></td>
+				<td>Direccion:</td>
+				<td><input type="text" name="txt_dir" class="required"></td>
 			</tr>
 			<tr>
 				<td>Edad:</td>
 				<td><input type="text" name="txt_edad" class="required"></td>
+			</tr>			
+			<tr>
+				<td>Correo:</td>
+				<td><input type="text" name="txt_cor" class="required"></td>
+			</tr>
+			<tr>
+				<td>Distrito:</td>
+				<td><input type="text" name="txt_dis" class="required"></td>
+			</tr>
+			<tr>
+				<td>Cargo:</td>
+				<td><input type="text" name="txt_car" class="required"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><input type="submit"

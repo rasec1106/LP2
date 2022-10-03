@@ -18,16 +18,19 @@ public class ModelAlumno {
 		ResultSet rs = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "select * from tb_alumno";
+			String sql = "select * from tb_trabajador";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			while(rs.next()) {
 				alu = new Alumno();
 				alu.setCodigo(rs.getInt(1));
 				alu.setNombre(rs.getString(2));
-				alu.setPaterno(rs.getString(3));
-				alu.setMaterno(rs.getString(4));
+				alu.setApellido(rs.getString(3));
+				alu.setDireccion(rs.getString(4));
 				alu.setEdad(rs.getInt(5));
+				alu.setCorreo(rs.getString(6));
+				alu.setDistrito(rs.getString(7));
+				alu.setCargo(rs.getString(8));
 				data.add(alu);
 			}
 		}catch(Exception e) {
@@ -51,7 +54,7 @@ public class ModelAlumno {
 		ResultSet rs = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "select * from tb_alumno where cod_alu=?";
+			String sql = "select * from tb_trabajador where cod_tra=?";
 			pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, code);
 			rs = pstm.executeQuery();
@@ -59,9 +62,12 @@ public class ModelAlumno {
 				alu = new Alumno();
 				alu.setCodigo(rs.getInt(1));
 				alu.setNombre(rs.getString(2));
-				alu.setPaterno(rs.getString(3));
-				alu.setMaterno(rs.getString(4));
+				alu.setApellido(rs.getString(3));
+				alu.setDireccion(rs.getString(4));
 				alu.setEdad(rs.getInt(5));
+				alu.setCorreo(rs.getString(6));
+				alu.setDistrito(rs.getString(7));
+				alu.setCargo(rs.getString(8));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -83,12 +89,15 @@ public class ModelAlumno {
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "insert into tb_alumno values(null,?,?,?,?)";
+			String sql = "insert into tb_trabajador values(null,?,?,?,?,?,?,?)";
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, a.getNombre());
-			pstm.setString(2, a.getPaterno());
-			pstm.setString(3, a.getMaterno());
+			pstm.setString(2, a.getApellido());
+			pstm.setString(3, a.getDireccion());
 			pstm.setInt(4, a.getEdad());
+			pstm.setString(5, a.getCorreo());
+			pstm.setString(6, a.getDistrito());
+			pstm.setString(7, a.getCargo());
 			estado = pstm.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -109,13 +118,16 @@ public class ModelAlumno {
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "update tb_alumno set nom_alu=?, ape_pat_alu=?, ape_mat_alu=?, edad_alu=? where cod_alu=?";
+			String sql = "update tb_trabajador set nom_tra=?, ape_tra=?, dir_tra=?, edad_tra=?, email_tra=?, dis_tra=?, cargo_tra=? where cod_tra=?";
 			pstm = cn.prepareStatement(sql);
 			pstm.setString(1, a.getNombre());
-			pstm.setString(2, a.getPaterno());
-			pstm.setString(3, a.getMaterno());
+			pstm.setString(2, a.getApellido());
+			pstm.setString(3, a.getDireccion());
 			pstm.setInt(4, a.getEdad());
-			pstm.setInt(5, a.getCodigo());
+			pstm.setString(5, a.getCorreo());
+			pstm.setString(6, a.getDistrito());
+			pstm.setString(7, a.getCargo());
+			pstm.setInt(8, a.getCodigo());
 			estado = pstm.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -136,7 +148,7 @@ public class ModelAlumno {
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "delete from tb_alumno where cod_alu=?";
+			String sql = "delete from tb_trabajador where cod_tra=?";
 			pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, code);
 			estado = pstm.executeUpdate();

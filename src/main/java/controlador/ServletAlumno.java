@@ -54,15 +54,21 @@ public class ServletAlumno extends HttpServlet {
 		Alumno obj = new Alumno();
 		int cod = Integer.parseInt(request.getParameter("txt_cod"));
 		String nom = request.getParameter("txt_nom");
-		String pat = request.getParameter("txt_pat");
-		String mat = request.getParameter("txt_mat");
+		String ape = request.getParameter("txt_ape");
+		String dir = request.getParameter("txt_dir");
 		int edad = Integer.parseInt(request.getParameter("txt_edad"));
+		String cor = request.getParameter("txt_cor");
+		String dis = request.getParameter("txt_dis");
+		String car = request.getParameter("txt_car");
 		
 		obj.setCodigo(cod);
 		obj.setNombre(nom);
-		obj.setPaterno(pat);
-		obj.setMaterno(mat);
+		obj.setApellido(ape);
+		obj.setDireccion(dir);
 		obj.setEdad(edad);
+		obj.setCorreo(cor);
+		obj.setDistrito(dis);
+		obj.setCargo(car);
 		
 		int estado = m.actualizar(obj);
 		if(estado != -1)
@@ -82,14 +88,20 @@ public class ServletAlumno extends HttpServlet {
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Alumno obj = new Alumno();
 		String nom = request.getParameter("txt_nom");
-		String pat = request.getParameter("txt_pat");
-		String mat = request.getParameter("txt_mat");
+		String ape = request.getParameter("txt_ape");
+		String dir = request.getParameter("txt_dir");
 		int edad = Integer.parseInt(request.getParameter("txt_edad"));
+		String cor = request.getParameter("txt_cor");
+		String dis = request.getParameter("txt_dis");
+		String car = request.getParameter("txt_car");
 		
 		obj.setNombre(nom);
-		obj.setPaterno(pat);
-		obj.setMaterno(mat);
+		obj.setApellido(ape);
+		obj.setDireccion(dir);
 		obj.setEdad(edad);
+		obj.setCorreo(cor);
+		obj.setDistrito(dis);
+		obj.setCargo(car);
 		
 		int estado = m.registrar(obj);
 		if(estado != -1)

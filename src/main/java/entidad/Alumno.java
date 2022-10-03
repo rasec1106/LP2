@@ -2,7 +2,8 @@ package entidad;
 
 public class Alumno {
 	private int codigo;
-	private String nombre, paterno, materno;
+	private String nombre, apellido, direccion;
+	private String correo, distrito, cargo;
 	private int edad;
 	
 	public int getCodigo() {
@@ -17,17 +18,35 @@ public class Alumno {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getPaterno() {
-		return paterno;
+	public String getApellido() {
+		return apellido;
 	}
-	public void setPaterno(String paterno) {
-		this.paterno = paterno;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
-	public String getMaterno() {
-		return materno;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setMaterno(String materno) {
-		this.materno = materno;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public String getDistrito() {
+		return distrito;
+	}
+	public void setDistrito(String distrito) {
+		this.distrito = distrito;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	public int getEdad() {
 		return edad;
@@ -35,5 +54,4 @@ public class Alumno {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-
 }

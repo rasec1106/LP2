@@ -17,9 +17,12 @@
 		<tr>
 			<th>Codigo</th>
 			<th>Nombre</th>
-			<th>Paterno</th>
-			<th>Materno</th>
+			<th>Apellido</th>
+			<th>Direccion</th>
 			<th>Edad</th>
+			<th>Correo</th>
+			<th>Distrito</th>
+			<th>Cargo</th>
 			<th colspan="2">Acciones</th>
 		</tr>
 		<%
@@ -29,9 +32,12 @@
 		<tr>
 			<td><%=a.getCodigo()%></td>
 			<td><%=a.getNombre()%></td>
-			<td><%=a.getPaterno()%></td>
-			<td><%=a.getMaterno()%></td>
+			<td><%=a.getApellido()%></td>
+			<td><%=a.getDireccion()%></td>
 			<td><%=a.getEdad()%></td>
+			<td><%=a.getCorreo()%></td>
+			<td><%=a.getDistrito()%></td>
+			<td><%=a.getCargo()%></td>
 			<td colspan="2" align="center"><a
 				href="ServletAlumno?tipo=buscar&txt_cod=<%=a.getCodigo()%>"> <img
 					title="Editar" src="img/edit.png" width="16px">
