@@ -4,25 +4,25 @@ import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.util.List;
 
-import entidad.Alumno;
+import entidad.Proveedor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import modelo.ModelAlumno;
+import modelo.ModelProveedor;
 
 /**
- * Servlet implementation class ServletAlumno
+ * Servlet implementation class ServletProveedor
  */
-@WebServlet("/ServletAlumno")
-public class ServletAlumno extends HttpServlet {
-	ModelAlumno m = new ModelAlumno();
+@WebServlet("/ServletProveedor")
+public class ServletProveedor extends HttpServlet {
+	ModelProveedor m = new ModelProveedor();
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletAlumno() {
+    public ServletProveedor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,30 +45,30 @@ public class ServletAlumno extends HttpServlet {
 	}
 
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cod = Integer.parseInt(request.getParameter("txt_cod"));
+		int cod = Integer.parseInt(request.getParameter("codigo"));
 		m.eliminar(cod);
-		request.getRequestDispatcher("ServletAlumno?tipo=listar").forward(request, response);			
+		request.getRequestDispatcher("ServletProveedor?tipo=listar").forward(request, response);			
 	}
 
 	private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Alumno obj = new Alumno();
-		int cod = Integer.parseInt(request.getParameter("txt_cod"));
-		String nom = request.getParameter("txt_nom");
-		String ape = request.getParameter("txt_ape");
+		Proveedor obj = new Proveedor();
+		int cod = Integer.parseInt(request.getParameter("codigo"));
+		String raz = request.getParameter("txt_raz");
+		String ruc = request.getParameter("txt_ruc");
 		String dir = request.getParameter("txt_dir");
-		int edad = Integer.parseInt(request.getParameter("txt_edad"));
-		String cor = request.getParameter("txt_cor");
-		String dis = request.getParameter("txt_dis");
-		String car = request.getParameter("txt_car");
+		String dni = request.getParameter("txt_dni");
+		String nom = request.getParameter("txt_nom");
+		String cel = request.getParameter("txt_cel");
+		String fec = request.getParameter("txt_fec");
 		
 		obj.setCodigo(cod);
-		obj.setNombre(nom);
-		obj.setApellido(ape);
+		obj.setRazonSocial(raz);
+		obj.setRuc(ruc);
 		obj.setDireccion(dir);
-		obj.setEdad(edad);
-		obj.setCorreo(cor);
-		obj.setDistrito(dis);
-		obj.setCargo(car);
+		obj.setDni(dni);
+		obj.setNombre(nom);
+		obj.setCelular(cel);
+		obj.setFecNacimiento(fec);
 		
 		int estado = m.actualizar(obj);
 		if(estado != -1)
@@ -79,29 +79,29 @@ public class ServletAlumno extends HttpServlet {
 	}
 
 	private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cod = Integer.parseInt(request.getParameter("txt_cod"));
-		Alumno x = m.buscar(cod);
+		int cod = Integer.parseInt(request.getParameter("codigo"));
+		Proveedor x = m.buscar(cod);
 		request.setAttribute("registro", x);
-		request.getRequestDispatcher("actualizarAlumno.jsp").forward(request, response);		
+		request.getRequestDispatcher("actualizarProveedor.jsp").forward(request, response);		
 	}
 
 	private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Alumno obj = new Alumno();
-		String nom = request.getParameter("txt_nom");
-		String ape = request.getParameter("txt_ape");
+		Proveedor obj = new Proveedor();
+		String raz = request.getParameter("txt_raz");
+		String ruc = request.getParameter("txt_ruc");
 		String dir = request.getParameter("txt_dir");
-		int edad = Integer.parseInt(request.getParameter("txt_edad"));
-		String cor = request.getParameter("txt_cor");
-		String dis = request.getParameter("txt_dis");
-		String car = request.getParameter("txt_car");
+		String dni = request.getParameter("txt_dni");
+		String nom = request.getParameter("txt_nom");
+		String cel = request.getParameter("txt_cel");
+		String fec = request.getParameter("txt_fec");
 		
-		obj.setNombre(nom);
-		obj.setApellido(ape);
+		obj.setRazonSocial(raz);
+		obj.setRuc(ruc);
 		obj.setDireccion(dir);
-		obj.setEdad(edad);
-		obj.setCorreo(cor);
-		obj.setDistrito(dis);
-		obj.setCargo(car);
+		obj.setDni(dni);
+		obj.setNombre(nom);
+		obj.setCelular(cel);
+		obj.setFecNacimiento(fec);
 		
 		int estado = m.registrar(obj);
 		if(estado != -1)
@@ -112,9 +112,9 @@ public class ServletAlumno extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Alumno> info = m.listar();
+		List<Proveedor> info = m.listar();
 		request.setAttribute("data", info);
-		request.getRequestDispatcher("listarAlumno.jsp").forward(request, response);
+		request.getRequestDispatcher("listarProveedor.jsp").forward(request, response);
 	}
 
 }

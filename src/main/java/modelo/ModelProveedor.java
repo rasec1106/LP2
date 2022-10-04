@@ -5,33 +5,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import entidad.Alumno;
+import entidad.Proveedor;
 import utils.MySqlDbConnection;
 
-public class ModelAlumno {
+public class ModelProveedor {
 	
-	public List<Alumno> listar(){
-		Alumno alu = null;
-		List<Alumno> data = new ArrayList<Alumno>();
+	public List<Proveedor> listar(){
+		Proveedor prov = null;
+		List<Proveedor> data = new ArrayList<Proveedor>();
 		Connection cn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "select * from tb_trabajador";
+			String sql = "select * from tb_proveedor";
 			pstm = cn.prepareStatement(sql);
 			rs = pstm.executeQuery();
 			while(rs.next()) {
-				alu = new Alumno();
-				alu.setCodigo(rs.getInt(1));
-				alu.setNombre(rs.getString(2));
-				alu.setApellido(rs.getString(3));
-				alu.setDireccion(rs.getString(4));
-				alu.setEdad(rs.getInt(5));
-				alu.setCorreo(rs.getString(6));
-				alu.setDistrito(rs.getString(7));
-				alu.setCargo(rs.getString(8));
-				data.add(alu);
+				prov = new Proveedor();
+				prov.setCodigo(rs.getInt(1));
+				prov.setRazonSocial(rs.getString(2));
+				prov.setRuc(rs.getString(3));
+				prov.setDireccion(rs.getString(4));
+				prov.setDni(rs.getString(5));
+				prov.setNombre(rs.getString(6));
+				prov.setCelular(rs.getString(7));
+				prov.setFecNacimiento(rs.getString(8));
+				data.add(prov);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -47,27 +47,27 @@ public class ModelAlumno {
 		return data;
 	}
 	
-	public Alumno buscar(int code){
-		Alumno alu = null;
+	public Proveedor buscar(int code){
+		Proveedor prov = null;
 		Connection cn = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "select * from tb_trabajador where cod_tra=?";
+			String sql = "select * from tb_proveedor where codigo=?";
 			pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, code);
 			rs = pstm.executeQuery();
 			if(rs.next()) {
-				alu = new Alumno();
-				alu.setCodigo(rs.getInt(1));
-				alu.setNombre(rs.getString(2));
-				alu.setApellido(rs.getString(3));
-				alu.setDireccion(rs.getString(4));
-				alu.setEdad(rs.getInt(5));
-				alu.setCorreo(rs.getString(6));
-				alu.setDistrito(rs.getString(7));
-				alu.setCargo(rs.getString(8));
+				prov = new Proveedor();
+				prov.setCodigo(rs.getInt(1));
+				prov.setRazonSocial(rs.getString(2));
+				prov.setRuc(rs.getString(3));
+				prov.setDireccion(rs.getString(4));
+				prov.setDni(rs.getString(5));
+				prov.setNombre(rs.getString(6));
+				prov.setCelular(rs.getString(7));
+				prov.setFecNacimiento(rs.getString(8));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -80,24 +80,24 @@ public class ModelAlumno {
 				e2.printStackTrace();
 			}
 		}
-		return alu;
+		return prov;
 	}
 	
-	public int registrar(Alumno a){
+	public int registrar(Proveedor p){
 		int estado = -1;
 		Connection cn = null;
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "insert into tb_trabajador values(null,?,?,?,?,?,?,?)";
+			String sql = "insert into tb_proveedor values(null,?,?,?,?,?,?,?)";
 			pstm = cn.prepareStatement(sql);
-			pstm.setString(1, a.getNombre());
-			pstm.setString(2, a.getApellido());
-			pstm.setString(3, a.getDireccion());
-			pstm.setInt(4, a.getEdad());
-			pstm.setString(5, a.getCorreo());
-			pstm.setString(6, a.getDistrito());
-			pstm.setString(7, a.getCargo());
+			pstm.setString(1, p.getRazonSocial());
+			pstm.setString(2, p.getRuc());
+			pstm.setString(3, p.getDireccion());
+			pstm.setString(4, p.getDni());
+			pstm.setString(5, p.getNombre());
+			pstm.setString(6, p.getCelular());
+			pstm.setString(7, p.getFecNacimiento());
 			estado = pstm.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -112,22 +112,22 @@ public class ModelAlumno {
 		return estado;
 	}
 	
-	public int actualizar(Alumno a){
+	public int actualizar(Proveedor p){
 		int estado = -1;
 		Connection cn = null;
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "update tb_trabajador set nom_tra=?, ape_tra=?, dir_tra=?, edad_tra=?, email_tra=?, dis_tra=?, cargo_tra=? where cod_tra=?";
-			pstm = cn.prepareStatement(sql);
-			pstm.setString(1, a.getNombre());
-			pstm.setString(2, a.getApellido());
-			pstm.setString(3, a.getDireccion());
-			pstm.setInt(4, a.getEdad());
-			pstm.setString(5, a.getCorreo());
-			pstm.setString(6, a.getDistrito());
-			pstm.setString(7, a.getCargo());
-			pstm.setInt(8, a.getCodigo());
+			String sql = "update tb_proveedor set razonSocial=?, ruc=?, direccion=?, dni=?, nombre=?, celular=?, fecNacimiento=? where codigo=?";
+			pstm = cn.prepareStatement(sql);			
+			pstm.setString(1, p.getRazonSocial());
+			pstm.setString(2, p.getRuc());
+			pstm.setString(3, p.getDireccion());
+			pstm.setString(4, p.getDni());
+			pstm.setString(5, p.getNombre());
+			pstm.setString(6, p.getCelular());
+			pstm.setString(7, p.getFecNacimiento());
+			pstm.setInt(8, p.getCodigo());
 			estado = pstm.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -148,7 +148,7 @@ public class ModelAlumno {
 		PreparedStatement pstm = null;
 		try {
 			cn= MySqlDbConnection.getConnection();
-			String sql = "delete from tb_trabajador where cod_tra=?";
+			String sql = "delete from tb_proveedor where codigo=?";
 			pstm = cn.prepareStatement(sql);
 			pstm.setInt(1, code);
 			estado = pstm.executeUpdate();
