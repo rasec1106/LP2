@@ -20,10 +20,10 @@
 	<div class="container d-flex justify-content-center">
 		<div class="card mt-3" style="width: 75%;">
 			<div class="card-header">Actualizar Proveedor</div>
-			<div class="card-body">
-				<input type="hidden" name="codigo" value="<%=a.getCodigo()%>">
+			<div class="card-body">				
 				<form action="ServletProveedor?tipo=actualizar" id="frmActualizar"
 					method="post" onsubmit="return(validate())">
+					<input type="hidden" name="codigo" value="<%=a.getCodigo()%>">
 					<div class="row mb-2">
 						<div class="col">
 							<label for="razonSocial" class="form-label">Razon Social:</label>
@@ -81,7 +81,7 @@
 					</div>
 					<div class="row mb-2">
 						<div class="col d-flex justify-content-center">
-							<button type="submit" class="btn btn-success w-100">Registrar</button>
+							<button type="submit" class="btn btn-success w-100">Actualizar</button>
 						</div>
 					</div>
 				</form>

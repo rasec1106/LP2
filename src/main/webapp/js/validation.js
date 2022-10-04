@@ -43,7 +43,7 @@ function validate(){
 	}
 	
 	if(estado){
-		alert("Se ingreso correctamente un nuevo registro");
+		alert("Se realizo correctamente la operacion del registro.");
 	}
 	
 	return estado;
