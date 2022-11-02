@@ -12,6 +12,22 @@ public class ProductoService {
    ProductoDAO objPro = fabrica.getProducto();
 
    public List<ProductoDTO> listaProducto() {
-      return objPro.listarProducto();
+	      return objPro.listarProducto();
+   }
+
+   public ProductoDTO buscaProducto(int cod) {
+      return objPro.buscarProducto(cod);
+   }
+
+   public int registraProducto(ProductoDTO obj) {
+      return objPro.registrarProducto(obj);
+   }
+
+   public int actualizaProducto(ProductoDTO obj) {
+      return objPro.actualizarProducto(obj);
+   }
+
+   public int eliminaProducto(int cod) {
+      return objPro.eliminarProducto(cod);
    }
 }
