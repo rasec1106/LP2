@@ -1,20 +1,20 @@
 package dao;
 
-
-
-import interfaces.ProductoDAO;
+import interfaces.MarcaDAO;
+import interfaces.PaisDAO;
+import interfaces.EquipoDAO;
 
 public abstract class DAOFactory {
 	
-   // Posibles orígenes de datos
    public static final int MYSQL = 1;  
    public static final int ORACLE = 2;
    public static final int SQLSERVER = 3;
    public static final int INFORMIX = 4;
    public static final int DB2 = 5;
 
-   // Trae tantas interfaces como tengas
-   public abstract ProductoDAO getProducto();
+   public abstract EquipoDAO getEquipo();
+   public abstract MarcaDAO getMarca();
+   public abstract PaisDAO getPais();
 
    public static DAOFactory getDAOFactory(int whichFactory) {
       switch(whichFactory) {

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="ServletProducto?tipo=listar">Listar</a>
+<a href="ServletEquipo?tipo=listar">Listar</a> 
 <a href="registrarProducto.jsp">Nuevo</a>
 </body>
 </html>
