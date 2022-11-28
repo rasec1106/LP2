@@ -1,24 +1,24 @@
 package dao;
 
-import interfaces.MarcaDAO;
-import interfaces.PaisDAO;
-import interfaces.EquipoDAO;
+import interfaces.UniversidadDAO;
+import interfaces.EspecialidadDAO;
+import interfaces.IngenieroDAO;
 
 public class MySQLDAOFactory extends DAOFactory {
 
 	@Override
-	public EquipoDAO getEquipo() {
-		return new MySQLEquipoDAO();
+	public IngenieroDAO getIngeniero() {
+		return new MySQLIngenieroDAO();
 	}
 
 	@Override
-	public MarcaDAO getMarca() {
-		return new MySQLMarcaDAO();
+	public UniversidadDAO getUniversidad() {
+		return new MySQLUniversidadDAO();
 	}
 
 	@Override
-	public PaisDAO getPais() {
-		return new MySQLPaisDAO();
+	public EspecialidadDAO getEspecialidad() {
+		return new MySQLEspecialidadDAO();
 	}
 
 }

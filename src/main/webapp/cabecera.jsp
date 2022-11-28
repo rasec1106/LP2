@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Practica Calificada 02</a>
+    <a class="navbar-brand" href="#">Practica Calificada 03</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,13 +24,13 @@
           <a class="nav-link active" aria-current="page" href="index.jsp">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="ServletEquipo?tipo=listar">Equipos</a>
+          <a class="nav-link active" href="ServletIngeniero?tipo=listar">Ingenieros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Marcas</a>
+          <a class="nav-link disabled">Universidades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Paises</a>
+          <a class="nav-link disabled">Especialidades</a>
         </li>
       </ul>
     </div>

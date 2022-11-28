@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html" charset="UTF-8">
-<title>Practica Calificada 02</title>
+<title>Practica Calificada 03</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -16,7 +16,7 @@
 		<jsp:include page="cabecera.jsp" />
 		<div class="row my-5">
 			<div class="col w-100 text-center">
-				<h1>Practica Calificada 02 de Lenguajes de Programacion</h1>
+				<h1>Practica Calificada 03 de Lenguajes de Programacion</h1>
 			</div>
 		</div>
 		<div class="row my-5">
@@ -26,15 +26,15 @@
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-auto d-flex justify-content-center">
-				<a href="ServletEquipo?tipo=listar" class="btn btn-primary">Listar
-					Equipos</a>
+				<a href="ServletIngeniero?tipo=listar" class="btn btn-primary">Listar
+					Ingenieros</a>
 
 			</div>
 			<div class="col-auto d-flex justify-content-center">
-				<a href="#" class="btn btn-outline-primary disabled">Listar Marcas</a>
+				<a href="#" class="btn btn-outline-primary disabled">Listar Universidades</a>
 			</div>
 			<div class="col-auto d-flex justify-content-center">
-				<a href="#" class="btn btn-outline-primary disabled">Listar Paises</a>
+				<a href="#" class="btn btn-outline-primary disabled">Listar Especialidades</a>
 			</div>
 		</div>
 	</div>

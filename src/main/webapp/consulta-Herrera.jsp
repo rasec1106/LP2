@@ -1,4 +1,4 @@
-<%@page import="beans.EquipoDTO"%>
+<%@page import="beans.IngenieroDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listar Equipos</title>
+<title>Listar Ingenieros</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -46,33 +46,35 @@
 			<thead>
 				<tr>
 					<th>CÓDIGO</th>
-					<th>DESCRIPCIÓN</th>
-					<th>PRECIO</th>
-					<th>STOCK</th>
-					<th>MARCA</th>
-					<th>PAIS</th>
+					<th>NOMBRE</th>
+					<th>APELLIDO</th>
+					<th>DNI</th>
+					<th>SUELDO</th>
+					<th>UNIVERSIDAD</th>
+					<th>ESPECIALIDAD</th>
 					<th colspan="2">ACCIONES</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-				ArrayList<EquipoDTO> lista = (ArrayList<EquipoDTO>) request.getAttribute("data");
-				if (lista != null) {
-					for (EquipoDTO xPro : lista) {
-						out.println("<tr>");
-						out.println("<td>" + xPro.getCodigo() + "</td>");
-						out.println("<td>" + xPro.getDescripcion() + "</td>");
-						out.println("<td>" + xPro.getPrecio() + "</td>");
-						out.println("<td>" + xPro.getStock() + "</td>");
-						out.println("<td>" + xPro.getNomMarca() + "</td>");
-						out.println("<td>" + xPro.getNomPais() + "</td>");
-						out.println("<td align='center'><a href='ServletEquipo?tipo=buscar&cod=" + xPro.getCodigo() + "'>"
-						+ "<img title='Editar' src='img/edit.png' width='16px'></a></td>");
-						out.println("<td align='center'><a href='ServletEquipo?tipo=eliminar&cod=" + xPro.getCodigo() + "'>"
-						+ "<img	title='Eliminar' src='img/delete.png' width='16px'></a></td>");
-						out.println("</tr>");
-					}
-				}
+				ArrayList<IngenieroDTO> lista = (ArrayList<IngenieroDTO>) request.getAttribute("data");
+						if (lista != null) {
+							for (IngenieroDTO xPro : lista) {
+								out.println("<tr>");
+								out.println("<td>" + xPro.getCodigo() + "</td>");
+								out.println("<td>" + xPro.getNombre() + "</td>");
+								out.println("<td>" + xPro.getApellido() + "</td>");
+								out.println("<td>" + xPro.getDni() + "</td>");
+								out.println("<td>" + xPro.getSueldo() + "</td>");
+								out.println("<td>" + xPro.getNomUniversidad() + "</td>");
+								out.println("<td>" + xPro.getNomEspecialidad() + "</td>");
+								out.println("<td align='center'><a href='ServletEquipo?tipo=buscar&cod=" + xPro.getCodigo() + "'>"
+								+ "<img title='Editar' src='img/edit.png' width='16px'></a></td>");
+								out.println("<td align='center'><a href='ServletEquipo?tipo=eliminar&cod=" + xPro.getCodigo() + "'>"
+								+ "<img	title='Eliminar' src='img/delete.png' width='16px'></a></td>");
+								out.println("</tr>");
+							}
+						}
 				%>
 			</tbody>
 		</table>

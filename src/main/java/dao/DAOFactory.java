@@ -1,8 +1,8 @@
 package dao;
 
-import interfaces.MarcaDAO;
-import interfaces.PaisDAO;
-import interfaces.EquipoDAO;
+import interfaces.UniversidadDAO;
+import interfaces.EspecialidadDAO;
+import interfaces.IngenieroDAO;
 
 public abstract class DAOFactory {
 	
@@ -12,9 +12,9 @@ public abstract class DAOFactory {
    public static final int INFORMIX = 4;
    public static final int DB2 = 5;
 
-   public abstract EquipoDAO getEquipo();
-   public abstract MarcaDAO getMarca();
-   public abstract PaisDAO getPais();
+   public abstract IngenieroDAO getIngeniero();
+   public abstract UniversidadDAO getUniversidad();
+   public abstract EspecialidadDAO getEspecialidad();
 
    public static DAOFactory getDAOFactory(int whichFactory) {
       switch(whichFactory) {

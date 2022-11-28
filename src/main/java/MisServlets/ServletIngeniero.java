@@ -3,25 +3,25 @@ package MisServlets;
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 
-import beans.EquipoDTO;
+import beans.IngenieroDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.EquipoService;
+import service.IngenieroService;
 
 /**
- * Servlet implementation class ServletProducto
+ * Servlet implementation class ServletIngeniero
  */
-@WebServlet("/ServletEquipo")
-public class ServletEquipo extends HttpServlet {
+@WebServlet("/ServletIngeniero")
+public class ServletIngeniero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    EquipoService serviEquipo = new EquipoService();
+    IngenieroService serviIngeniero = new IngenieroService();
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletEquipo() {
+    public ServletIngeniero() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,7 +47,7 @@ public class ServletEquipo extends HttpServlet {
 	      if (xtipo.equals("listar")) {
 	          listar(request, response);
 	       }
-	      else if (xtipo.equals("buscarpre")) {
+	      /*else if (xtipo.equals("buscarpre")) {
 	          buscarPrecio(request, response);
 	       }
 	       else if (xtipo.equals("buscar")) {
@@ -61,14 +61,14 @@ public class ServletEquipo extends HttpServlet {
 	       }
 	       else if (xtipo.equals("eliminar")) {
 	          eliminar(request, response);
-	       }
+	       }*/
 	}
 
    private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      request.setAttribute("data", serviEquipo.listaEquipo());
+      request.setAttribute("data", serviIngeniero.listaIngeniero());
       request.getRequestDispatcher("consulta-Herrera.jsp").forward(request, response);
    }
-   
+   /*
    private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {		   
 	      int marca, pais, stock, cod;
@@ -78,7 +78,7 @@ public class ServletEquipo extends HttpServlet {
 	      stock = Integer.parseInt(request.getParameter("txt_stock"));
 	      marca = Integer.parseInt(request.getParameter("cbo_marca"));
 	      pais = Integer.parseInt(request.getParameter("cbo_pais"));
-	      EquipoDTO obj = new EquipoDTO();
+	      IngenieroDTO obj = new IngenieroDTO();
 	      obj.setCodigo(cod);
 	      obj.setDescripcion(des);
 	      obj.setPrecio(pre);
@@ -100,7 +100,7 @@ public class ServletEquipo extends HttpServlet {
       double pre = Double.parseDouble(request.getParameter("txt_pre"));
       stock = Integer.parseInt(request.getParameter("txt_stock"));
       marca = Integer.parseInt(request.getParameter("cbo_marca"));
-      EquipoDTO obj = new EquipoDTO();
+      IngenieroDTO obj = new IngenieroDTO();
       obj.setDescripcion(des);
       obj.setPrecio(pre);
       obj.setStock(stock);
@@ -140,5 +140,5 @@ public class ServletEquipo extends HttpServlet {
 	}
       
    }
-
+*/
 }

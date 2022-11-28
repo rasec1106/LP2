@@ -6,31 +6,30 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.PaisDTO;
-import interfaces.PaisDAO;
+import beans.EspecialidadDTO;
+import interfaces.EspecialidadDAO;
 import utils.MySqlDBConnection;
 
-public class MySQLPaisDAO implements PaisDAO {
+public class MySQLEspecialidadDAO implements EspecialidadDAO {
 
    @Override
-   public List<PaisDTO> listarPais() {
-      List<PaisDTO> data = new ArrayList<PaisDTO>();
-      PaisDTO obj = null;
+   public List<EspecialidadDTO> listarEspecialidad() {
+      List<EspecialidadDTO> data = new ArrayList<EspecialidadDTO>();
+      EspecialidadDTO obj = null;
       Connection cn = null;
       PreparedStatement pstm = null;
       ResultSet rs = null;
 
       try {
          cn = MySqlDBConnection.getConnection();
-         String sql = "select * from tb_pais";
+         String sql = "select * from tb_especialidad";
          pstm = cn.prepareStatement(sql);
          rs = pstm.executeQuery();
 
          while (rs.next()) {
-            obj = new PaisDTO();
+            obj = new EspecialidadDTO();
             obj.setCodigo(rs.getInt(1));
             obj.setNombre(rs.getString(2));
-            obj.setContinente(rs.getString(3));
             data.add(obj);
          }
       }

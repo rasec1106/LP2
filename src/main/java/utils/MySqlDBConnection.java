@@ -8,7 +8,7 @@ public class MySqlDBConnection {
 		Connection cn = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			cn = DriverManager.getConnection("jdbc:mysql://localhost/BD_HerreraVillacorta_CesarHumberto?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root","mysql");
+			cn = DriverManager.getConnection("jdbc:mysql://localhost/BD_HerreraVillacorta_CesarHumberto_CL3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root","cleu1106Q!");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -6,31 +6,30 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.MarcaDTO;
-import interfaces.MarcaDAO;
+import beans.UniversidadDTO;
+import interfaces.UniversidadDAO;
 import utils.MySqlDBConnection;
 
-public class MySQLMarcaDAO implements MarcaDAO {
+public class MySQLUniversidadDAO implements UniversidadDAO {
 
    @Override
-   public List<MarcaDTO> listarMarca() {
-      List<MarcaDTO> data = new ArrayList<MarcaDTO>();
-      MarcaDTO obj = null;
+   public List<UniversidadDTO> listarUniversidad() {
+      List<UniversidadDTO> data = new ArrayList<UniversidadDTO>();
+      UniversidadDTO obj = null;
       Connection cn = null;
       PreparedStatement pstm = null;
       ResultSet rs = null;
 
       try {
          cn = MySqlDBConnection.getConnection();
-         String sql = "select * from tb_marca";
+         String sql = "select * from tb_universidad";
          pstm = cn.prepareStatement(sql);
          rs = pstm.executeQuery();
 
          while (rs.next()) {
-            obj = new MarcaDTO();
+            obj = new UniversidadDTO();
             obj.setCodigo(rs.getInt(1));
             obj.setNombre(rs.getString(2));
-            obj.setCategoria(rs.getString(3));
             data.add(obj);
          }
       }

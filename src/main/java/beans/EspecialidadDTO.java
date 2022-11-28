@@ -1,19 +1,17 @@
 package beans;
 
-public class MarcaDTO {
+public class EspecialidadDTO {
 	
 	private int codigo;
-	private String nombre;
-	private String categoria;
+	private String nombre;	
 	
-	public MarcaDTO() {
+	public EspecialidadDTO() {
 		super();
 	}
-	public MarcaDTO(int codigo, String nombre, String categoria) {
+	public EspecialidadDTO(int codigo, String nombre) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
-		this.categoria = categoria;
 	}
 	public int getCodigo() {
 		return codigo;
@@ -27,11 +25,5 @@ public class MarcaDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	
+
 }

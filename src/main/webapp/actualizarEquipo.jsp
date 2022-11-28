@@ -1,8 +1,8 @@
-<%@page import="service.MarcaService"%>
-<%@page import="service.PaisService"%>
-<%@page import="beans.EquipoDTO"%>
-<%@page import="beans.MarcaDTO"%>
-<%@page import="beans.PaisDTO"%>
+<%@page import="service.UniversidadService"%>
+<%@page import="service.EspecialidadService"%>
+<%@page import="beans.IngenieroDTO"%>
+<%@page import="beans.UniversidadDTO"%>
+<%@page import="beans.EspecialidadDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -22,7 +22,7 @@
 	<div class="container">
 		<jsp:include page="cabecera.jsp" />
 		<%
-		EquipoDTO obj = (EquipoDTO) request.getAttribute("equipo");
+		IngenieroDTO obj = (IngenieroDTO) request.getAttribute("ingeniero");
 		%>
 
 		<div class="container d-flex justify-content-center">
@@ -32,14 +32,14 @@
 					<form action="ServletEquipo?tipo=actualizar" id="frmactualizar"
 						method="post">
 						<input type="hidden" name="txt_cod"
-							value="${requestScope.equipo.codigo}">
+							value="${requestScope.ingeniero.codigo}">
 						<div class="row mb-2">
 							<div class="col row">
 								<label for="descripcion" class="col-sm-4 col-form-label">Descripcion:</label>
 								<div class="col-sm-8">
 									<input type="text" class="form-control required" name="txt_des"
 										id="descripcion" placeholder="Ingrese Descripcion"
-										value="${requestScope.equipo.descripcion}">
+										value="${requestScope.ingeniero.descripcion}">
 								</div>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 								<div class="col-sm-8">
 									<input type="text" class="form-control required" name="txt_pre"
 										id="precio" placeholder="Ingrese Precio"
-										value="${requestScope.equipo.precio}">
+										value="${requestScope.ingeniero.precio}">
 								</div>
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 								<div class="col-sm-8">
 									<input type="text" class="form-control required" name="txt_stock"
 										id="stock" placeholder="Ingrese Stock"
-										value="${requestScope.equipo.stock}">
+										value="${requestScope.ingeniero.stock}">
 								</div>
 							</div>
 						</div>
@@ -69,17 +69,17 @@
 								<div class="col-sm-8">
 									<select class="form-select" name="cbo_marca" id="marca">
 									<%
-										List<MarcaDTO> marcas = new MarcaService().listaMarca();
-										String estadoMarca = "";
-										for (MarcaDTO marca : marcas) {
-											if (obj.getCodMarca() == marca.getCodigo()) {
-												estadoMarca = "selected";
-											} else {
-												estadoMarca = "";
-											}
-										%>
-										<option value="<%=marca.getCodigo()%>" <%=estadoMarca%>>
-											<%=marca.getNombre()%></option>
+									List<UniversidadDTO> universidades = new UniversidadService().listaUniversidad();
+									String estadoUniversidad = "";
+									for (UniversidadDTO universidad : universidades) {
+										if (obj.getCodUniversidad() == universidad.getCodigo()) {
+											estadoUniversidad = "selected";
+										} else {
+											estadoUniversidad = "";
+										}
+									%>
+										<option value="<%=universidad.getCodigo()%>" <%=estadoUniversidad%>>
+											<%=universidad.getNombre()%></option>
 										<%
 										}
 										%>
@@ -93,17 +93,17 @@
 								<div class="col-sm-8">
 									<select class="form-select" name="cbo_pais" id="pais">
 									<%
-										List<PaisDTO> paises = new PaisService().listaPais();
-										String estadoPais = "";
-										for (PaisDTO pais : paises) {
-											if (obj.getCodPais() == pais.getCodigo()) {
-												estadoPais = "selected";
-											} else {
-												estadoPais = "";
-											}
-										%>
-										<option value="<%=pais.getCodigo()%>" <%=estadoPais%>>
-											<%=pais.getNombre()%></option>
+									List<EspecialidadDTO> especialidades = new EspecialidadService().listaEspecialidad();
+									String estadoEspecialidad = "";
+									for (EspecialidadDTO especialidad : especialidades) {
+										if (obj.getCodEspecialidad() == especialidad.getCodigo()) {
+											estadoEspecialidad = "selected";
+										} else {
+											estadoEspecialidad = "";
+										}
+									%>
+										<option value="<%=especialidad.getCodigo()%>" <%=estadoEspecialidad%>>
+											<%=especialidad.getNombre()%></option>
 										<%
 										}
 										%>
