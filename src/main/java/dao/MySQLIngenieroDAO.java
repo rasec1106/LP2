@@ -49,44 +49,9 @@ public class MySQLIngenieroDAO implements IngenieroDAO {
       }
       return data;
    }
-   /*
-   @Override
-   public List<IngenieroDTO> buscarPorPrecio(double precio) {
-      List<IngenieroDTO> data = new ArrayList<IngenieroDTO>();
-      IngenieroDTO obj = null;
-      Connection cn = null;
-      PreparedStatement pstm = null;
-      ResultSet rs = null;
-
-      try {
-         cn = MySqlDBConnection.getConnection();
-         String sql = "select e.cod_equ, e.des_equ, e.pre_equ, e.stock_equ, m.nom_mar, p.nom_pais "
-         		+ "from tb_equipo e "
-         		+ "inner join tb_marca m on e.cod_mar = m.cod_mar "
-         		+ "inner join tb_pais p on e.cod_pais = p.cod_pais "
-         		+ "where e.pre_equ >= "+precio;
-         pstm = cn.prepareStatement(sql);
-         rs = pstm.executeQuery();
-
-         while (rs.next()) {
-            obj = new IngenieroDTO();
-            obj.setCodigo(rs.getInt(1));
-            obj.setDescripcion(rs.getString(2));
-            obj.setPrecio(rs.getDouble(3));
-            obj.setStock(rs.getInt(4));
-            obj.setNomMarca(rs.getString(5));
-            obj.setNomPais(rs.getString(6));
-            data.add(obj);
-         }
-      }
-      catch (Exception e) {
-         e.printStackTrace();
-      }
-      return data;
-   }
 
    @Override
-   public IngenieroDTO buscarEquipo(int cod) {
+   public IngenieroDTO buscarIngeniero(int cod) {
       IngenieroDTO obj = null;
       Connection cn = null;
       PreparedStatement pstm = null;
@@ -94,7 +59,7 @@ public class MySQLIngenieroDAO implements IngenieroDAO {
 
       try {
     	 cn = MySqlDBConnection.getConnection();
-         String sql = "select * from tb_equipo where cod_equ=?";
+         String sql = "select * from tb_ingeniero where cod_ingeniero=?";
          pstm = cn.prepareStatement(sql);
          pstm.setInt(1, cod);
          rs = pstm.executeQuery();
@@ -102,18 +67,19 @@ public class MySQLIngenieroDAO implements IngenieroDAO {
          if (rs.next()) {
             obj = new IngenieroDTO();
             obj.setCodigo(rs.getInt(1));
-            obj.setDescripcion(rs.getString(2));
-            obj.setPrecio(rs.getDouble(3));
-            obj.setStock(rs.getInt(4));
-            obj.setCodMarca(rs.getInt(5));
-            obj.setCodPais(rs.getInt(6));
+            obj.setNombre(rs.getString(2));
+            obj.setApellido(rs.getString(3));
+            obj.setDni(rs.getString(4));
+            obj.setSueldo(rs.getDouble(5));
+            obj.setCodUniversidad(rs.getInt(6));
+            obj.setCodEspecialidad(rs.getInt(7));
          }
       }
       catch (Exception e) {
          e.printStackTrace();
       }
       return obj;
-   }*/
+   }
 	
    @Override
    public int registrarIngeniero(IngenieroDTO obj) {

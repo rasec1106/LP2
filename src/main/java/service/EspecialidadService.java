@@ -16,4 +16,8 @@ public class EspecialidadService {
 	      return objPro.listarEspecialidad();
    }
    
+   public EspecialidadDTO buscaEspecialidad(int cod) {
+	      return objPro.buscarEspecialidad(cod);
+	   }
+   
 }

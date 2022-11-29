@@ -50,14 +50,3 @@ insert into tb_ingeniero values (2, 'Mark', 'Zuckerberg', '12345678', 10000, 5, 
 insert into tb_ingeniero values (3, 'Steve', 'Jobs', '11223344',12000, 1, 1);
 insert into tb_ingeniero values (4, 'Vanessa Lisett', 'Herrera Villacorta', '98674533', 2300, 2, 3);
 insert into tb_ingeniero values (5, 'Lionel', 'Messi', '09876543', 7400, 6, 4);
-
-
-select * from tb_universidad;
-select * from tb_especialidad;
-select * from tb_ingeniero;
-
-/*
-select e.cod_equ, e.des_equ, e.pre_equ, e.stock_equ, m.nom_mar, p.nom_pais
-from tb_equipo e
-inner join tb_marca m on e.cod_mar = m.cod_mar
-inner join tb_pais p on e.cod_pais = p.cod_pais;*/

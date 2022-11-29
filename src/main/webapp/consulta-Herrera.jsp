@@ -1,5 +1,7 @@
+<%@page import="beans.EspecialidadDTO"%>
 <%@page import="beans.IngenieroDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="utils.Utils"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,26 +20,9 @@
 		<jsp:include page="cabecera.jsp" />
 		<div class="row">
 			<div class="col">
-				<form action="ServletEquipo?tipo=buscarpre" id="frmbuscarpre"
-					method="post" class="row d-flex align-items-end">
-					<div class="col">
-						<label for="precio" class="form-label">Buscar por precio
-							(mayor o igual):</label> <input id="precio" type="text" name="txt_precio"
-							class="form-control" placeholder="Ingrese precio">
-					</div>
-					<div class="col">
-						<input type="submit" value="Consultar" class="btn btn-primary">
-					</div>
-				</form>
-			</div>
-			<div class="col d-flex align-items-end justify-content-end">
-				<form action="ServletEquipo?tipo=listar" id="frmlistar"
-					method="post"
-					class="row d-flex align-items-end justify-content-end">
-					<div class="col-auto">
-						<button class="btn btn-success">Mostrar Lista</button>
-					</div>
-				</form>
+				<div class="col-auto">
+					<a href="registrarIngeniero.jsp" class="btn btn-success">Nuevo Ingeniero</a>
+				</div>
 			</div>
 		</div>
 		<br>
@@ -57,7 +42,7 @@
 			</thead>
 			<tbody>
 				<%
-				ArrayList<IngenieroDTO> lista = (ArrayList<IngenieroDTO>) request.getAttribute("data");
+				ArrayList<IngenieroDTO> lista = (ArrayList<IngenieroDTO>)request.getAttribute("data");
 						if (lista != null) {
 							for (IngenieroDTO xPro : lista) {
 								out.println("<tr>");
@@ -68,9 +53,9 @@
 								out.println("<td>" + xPro.getSueldo() + "</td>");
 								out.println("<td>" + xPro.getNomUniversidad() + "</td>");
 								out.println("<td>" + xPro.getNomEspecialidad() + "</td>");
-								out.println("<td align='center'><a href='ServletEquipo?tipo=buscar&cod=" + xPro.getCodigo() + "'>"
+								out.println("<td align='center'><a href='ServletIngeniero?tipo=buscar&cod=" + xPro.getCodigo() + "'>"
 								+ "<img title='Editar' src='img/edit.png' width='16px'></a></td>");
-								out.println("<td align='center'><a href='ServletEquipo?tipo=eliminar&cod=" + xPro.getCodigo() + "'>"
+								out.println("<td align='center'><a href='ServletIngeniero?tipo=eliminar&cod=" + xPro.getCodigo() + "'>"
 								+ "<img	title='Eliminar' src='img/delete.png' width='16px'></a></td>");
 								out.println("</tr>");
 							}
@@ -78,6 +63,21 @@
 				%>
 			</tbody>
 		</table>
+		<hr>
+		<div class="row">
+			<div class="col">
+				<div class="col-auto">
+					<%	EspecialidadDTO especialidad = (EspecialidadDTO)request.getAttribute("especialidad"); %>
+					<div>Cantidad de Ingenieros en la especialidad de <%=especialidad.getNombre()%> : 
+						<%= Utils.ingenierosPorEspecialidad(lista, especialidad.getCodigo()) %>
+					</div>
+					<div>Suma de Sueldos de los Ingenieros en la especialidad de <%=especialidad.getNombre()%> :
+						<%= Utils.sumaSueldosPorEspecialidad(lista, especialidad.getCodigo()) %>
+					</div>
+				</div>
+			</div>
+			
+		</div>
 	</div>
 </body>
 <%
@@ -94,6 +94,5 @@ if (request.getAttribute("message") != null) {
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 	crossorigin="anonymous">
-	
 </script>
 </html>

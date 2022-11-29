@@ -26,12 +26,8 @@ public class IngenieroService {
    public int eliminaIngeniero(int cod) {
       return objPro.eliminarIngeniero(cod);
    }
-   
-   /*public List<IngenieroDTO> buscarPrecio(double precio) {
-	      return objPro.buscarPorPrecio(precio);
-   }
 
-   public IngenieroDTO buscaEquipo(int cod) {
-      return objPro.buscarEquipo(cod);
-   }*/
+   public IngenieroDTO buscaIngeniero(int cod) {
+      return objPro.buscarIngeniero(cod);
+   }
 }

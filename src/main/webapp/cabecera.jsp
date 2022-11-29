@@ -32,6 +32,9 @@
         <li class="nav-item">
           <a class="nav-link disabled">Especialidades</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="reporte.jsp">Reporte</a>
+        </li>
       </ul>
     </div>
   </div>

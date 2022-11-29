@@ -1,60 +1,40 @@
 function validate(){
-	let razonSocial = document.getElementById("razonSocial").value;
-	let ruc = document.getElementById("ruc").value;
-	let direccion = document.getElementById("direccion").value;
 	let nombre = document.getElementById("nombre").value;
+	let apellido = document.getElementById("apellido").value;
 	let dni = document.getElementById("dni").value;
-	let celular = document.getElementById("celular").value;
-	let fechaNacimiento = document.getElementById("fechaNacimiento").value;
+	let sueldo = document.getElementById("sueldo").value;
 	
 	let estado = true;	
 	clearValidationFields();
 	
-	if(razonSocial.length > 100 || razonSocial.length < 6){
-		document.getElementById("validRazonSocial").innerHTML="El campo debe contener entre 6 y 100 caracteres";
+	if(nombre.length > 50 || nombre.length < 3){
+		document.getElementById("validNombre").innerHTML="El campo debe contener entre 3 y 25 caracteres";
 		estado = false;
 	}
-	if(! /^\d{11}$/.test(ruc)){
-		document.getElementById("validRuc").innerHTML="El RUC tiene un formato invalido. (deben ser 11 numeros)";
-		estado = false;		
-	}
-	if(direccion.length > 200 || direccion.length < 10){
-		document.getElementById("validDireccion").innerHTML="El campo debe contener entre 10 y 200 caracteres";
-		estado = false;
-	}
-	if(nombre.length > 50 || nombre.length < 6){
-		document.getElementById("validNombre").innerHTML="El campo debe contener entre 6 y 50 caracteres";
+	if(apellido.length > 50 || apellido.length < 3){
+		document.getElementById("validApellido").innerHTML="El campo debe contener entre 3 y 25 caracteres";
 		estado = false;
 	}
 	if(! /^\d{8}$/.test(dni)){
 		document.getElementById("validDni").innerHTML="El DNI tiene un formato invalido. (deben ser 8 numeros)";
 		estado = false;		
 	}
-	if(! /^\d{9}$/.test(celular)){
-		document.getElementById("validCelular").innerHTML="El celular debe contener 9 digitos";
+	if(! /^\d+(\.\d{0,2}){0,1}$/.test(sueldo)){
+		document.getElementById("validSueldo").innerHTML="El Sueldo debe ser un numero entero o un numero con hasta 2 decimales";
 		estado = false;		
-	}else if(celular.charAt(0) != '9'){
-		document.getElementById("validCelular").innerHTML="El celular debe comenzar por 9...";
-		estado = false;		
-	}
-	if(! /^[1-2]\d{3}-[0-1]\d-[0-3]\d$/.test(fechaNacimiento)){
-		document.getElementById("validFecha").innerHTML="El formato de fecha es incorrecto. (debe ser yyyy-mm-dd)";
-		estado = false;		
-	}
-	
-	if(estado){
-		alert("Se realizo correctamente la operacion del registro.");
-	}
+	}else{
+		if(sueldo <= 0){
+			document.getElementById("validSueldo").innerHTML="El Sueldo debe ser mayor a 0";
+			estado = false;		
+		}
+	}					
 	
 	return estado;
 }
 
 function clearValidationFields(){
-	document.getElementById("validRazonSocial").innerHTML="";
-	document.getElementById("validRuc").innerHTML="";
-	document.getElementById("validDireccion").innerHTML="";
 	document.getElementById("validNombre").innerHTML="";
+	document.getElementById("validApellido").innerHTML="";
 	document.getElementById("validDni").innerHTML="";
-	document.getElementById("validCelular").innerHTML="";
-	document.getElementById("validFecha").innerHTML="";
+	document.getElementById("validSueldo").innerHTML="";
 }

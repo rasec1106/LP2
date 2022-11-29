@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.EspecialidadService;
 import service.IngenieroService;
 
 /**
@@ -17,6 +18,7 @@ import service.IngenieroService;
 public class ServletIngeniero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     IngenieroService serviIngeniero = new IngenieroService();
+    EspecialidadService serviEspecialidad = new EspecialidadService();
     
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,9 +49,6 @@ public class ServletIngeniero extends HttpServlet {
 	      if (xtipo.equals("listar")) {
 	          listar(request, response);
 	       }
-	      /*else if (xtipo.equals("buscarpre")) {
-	          buscarPrecio(request, response);
-	       }
 	       else if (xtipo.equals("buscar")) {
 	          buscar(request, response);
 	       }
@@ -61,84 +60,88 @@ public class ServletIngeniero extends HttpServlet {
 	       }
 	       else if (xtipo.equals("eliminar")) {
 	          eliminar(request, response);
-	       }*/
+	       }
 	}
 
    private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.setAttribute("data", serviIngeniero.listaIngeniero());
+      // Mandamos la especialidad de Ing. De Sistemas que posee el codigo 1
+      request.setAttribute("especialidad", serviEspecialidad.buscaEspecialidad(1));
       request.getRequestDispatcher("consulta-Herrera.jsp").forward(request, response);
    }
-   /*
+   
    private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {		   
-	      int marca, pais, stock, cod;
+	      int cod, uni, esp;
+	      String nom, ape, dni;
+	      double sue;
 	      cod = Integer.parseInt(request.getParameter("txt_cod"));
-	      String des = request.getParameter("txt_des");
-	      double pre = Double.parseDouble(request.getParameter("txt_pre"));
-	      stock = Integer.parseInt(request.getParameter("txt_stock"));
-	      marca = Integer.parseInt(request.getParameter("cbo_marca"));
-	      pais = Integer.parseInt(request.getParameter("cbo_pais"));
+	      nom = request.getParameter("txt_nom");
+	      ape = request.getParameter("txt_ape");
+	      dni = request.getParameter("txt_dni");
+	      sue = Double.parseDouble(request.getParameter("txt_sue"));
+	      uni = Integer.parseInt(request.getParameter("cbo_uni"));
+	      esp = Integer.parseInt(request.getParameter("cbo_esp"));
 	      IngenieroDTO obj = new IngenieroDTO();
 	      obj.setCodigo(cod);
-	      obj.setDescripcion(des);
-	      obj.setPrecio(pre);
-	      obj.setStock(stock);
-	      obj.setCodMarca(marca);
-	      obj.setCodPais(pais);
-	      serviEquipo.actualizaEquipo(obj);
+	      obj.setNombre(nom);
+	      obj.setApellido(ape);
+	      obj.setDni(dni);
+	      obj.setSueldo(sue);
+	      obj.setCodUniversidad(uni);
+	      obj.setCodEspecialidad(esp);
+	      serviIngeniero.actualizaIngeniero(obj);
 	      request.setAttribute("message", "Se actualizo correctamente el registro");
 	      listar(request, response);
 	   }catch (Exception e) {
 		   request.setAttribute("message", "No se pudo actualizar el registro. "+e.getMessage());
 		   listar(request, response);		
-	}
+	   }
    }
-
+   
    private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      int marca, stock;
-      String des = request.getParameter("txt_des");
-      double pre = Double.parseDouble(request.getParameter("txt_pre"));
-      stock = Integer.parseInt(request.getParameter("txt_stock"));
-      marca = Integer.parseInt(request.getParameter("cbo_marca"));
-      IngenieroDTO obj = new IngenieroDTO();
-      obj.setDescripcion(des);
-      obj.setPrecio(pre);
-      obj.setStock(stock);
-      obj.setCodMarca(marca);
-      serviEquipo.registraEquipo(obj);
-      listar(request, response);
+	   try {		   
+		   	int uni, esp;
+	      	String nom, ape, dni;
+	      	double sue;
+	      	nom = request.getParameter("txt_nom");
+	      	ape = request.getParameter("txt_ape");
+	      	dni = request.getParameter("txt_dni");
+	      	sue = Double.parseDouble(request.getParameter("txt_sue"));
+	      	uni = Integer.parseInt(request.getParameter("cbo_uni"));
+	      	esp = Integer.parseInt(request.getParameter("cbo_esp"));
+	      	IngenieroDTO obj = new IngenieroDTO();
+	      	obj.setNombre(nom);
+	      	obj.setApellido(ape);
+	      	obj.setDni(dni);
+	      	obj.setSueldo(sue);
+	      	obj.setCodUniversidad(uni);
+	      	obj.setCodEspecialidad(esp);
+	      	serviIngeniero.registraIngeniero(obj);
+	      	request.setAttribute("message", "Se creo correctamente el registro");
+	      	listar(request, response);
+	   }catch (Exception e) {
+		   	request.setAttribute("message", "No se pudo crear el registro. "+e.getMessage());
+		   	listar(request, response);		
+	   }
    }
 
    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       int cod = Integer.parseInt(request.getParameter("cod"));
-      request.setAttribute("equipo", serviEquipo.buscaEquipo(cod));
-      request.getRequestDispatcher("actualizarEquipo.jsp").forward(request, response);
+      request.setAttribute("ingeniero", serviIngeniero.buscaIngeniero(cod));
+      request.getRequestDispatcher("actualizarIngeniero.jsp").forward(request, response);
    }
-   
-   private void buscarPrecio(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String dato = request.getParameter("txt_precio");
-		try {
-			double precio = Double.parseDouble(dato);
-			request.setAttribute("data", serviEquipo.buscarPrecio(precio));
-			request.getRequestDispatcher("consulta-Herrera.jsp").forward(request, response);						
-		} catch (Exception e) {
-			request.setAttribute("message", "Formato de precio incorrecto");
-			listar(request, response);
-		}
-		
-	}
    
    private void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {
 		   int cod = Integer.parseInt(request.getParameter("cod"));
-		   serviEquipo.eliminaEquipo(cod);
+		   serviIngeniero.eliminaIngeniero(cod);
 		   request.setAttribute("message", "Se elimino correctamente el registro");
 		   listar(request, response);
 	   }catch (Exception e) {
 		   request.setAttribute("message", "No se pudo eliminar el registro. "+e.getMessage());
 		   listar(request, response);
-	}
+	   }
       
    }
-*/
 }

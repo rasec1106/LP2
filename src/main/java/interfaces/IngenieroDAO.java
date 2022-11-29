@@ -9,6 +9,5 @@ public interface IngenieroDAO {
 	public int registrarIngeniero(IngenieroDTO obj);
 	public int actualizarIngeniero(IngenieroDTO obj);
 	public int eliminarIngeniero(int cod);
-	/*public List<IngenieroDTO> buscarPorPrecio(double precio);
-	public IngenieroDTO buscarEquipo(int cod);*/
+	public IngenieroDTO buscarIngeniero(int cod);
 }
