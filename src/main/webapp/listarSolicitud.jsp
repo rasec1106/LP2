@@ -23,60 +23,63 @@
 	<div class="container">
 		<jsp:include page="cabecera.jsp" />
 		<div class="container d-flex justify-content-center">
-			<div class="card mt-3" style="width: 50%; position: relative; left:0;">
-			<div class="card-body">
+			<div class="card mt-3"
+				style="width: 50%; position: relative; left: 0;">
+				<div class="card-body">
 					<form action="ServletSolicitud?tipo=filtrar" id="frmfiltrar"
-						method="post" >
-				<div class="row mb-2">
-					<div class="row mb-2">
-						<label for="almacen" class="col-sm-4 col-form-label">Almacen:</label>
-						<div class="col-sm-8">
-							<select class="form-select" name="cbo_alm" id="almacen">
-								<option value="0">Seleccione almacen</option>
-								<%
-								List<AlmacenDTO> almacenes = new AlmacenService().listaAlmacen();
-								for (AlmacenDTO almacen : almacenes) {
-								%>
-								<option value="<%=almacen.getId()%>">
-									<%=almacen.getCodigo()%></option>
-								<%
-								}
-								%>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<label for="usuario" class="col-sm-4 col-form-label">Usuario:</label>
-						<div class="col-sm-8">
-							<select class="form-select" name="cbo_usr" id=""usuario"">
-								<option value="0">Seleccione usuario</option>
-								<%
-								List<UsuarioDTO> usuarios = new UsuarioService().listaUsuario();
-								for (UsuarioDTO usuario : usuarios) {
-								%>
-								<option value="<%=usuario.getId()%>">
-									<%=usuario.getNombres() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno()%></option>
-								<%
-								}
-								%>
-							</select>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<label for="fecha" class="col-sm-4 col-form-label">Fecha:</label>
-						<div class="col-sm-8">
-							<input type="date" class="form-select" name="txt_fec" id="fecha">
-						</div>
-					</div>
-					<div class="row mb-2">
-							<div class="col">
-								<input type="submit" class="btn btn-success w-100" value="Filtrar">
+						method="post">
+						<div class="row mb-2">
+							<div class="row mb-2">
+								<label for="almacen" class="col-sm-4 col-form-label">Almacen:</label>
+								<div class="col-sm-8">
+									<select class="form-select" name="cbo_alm" id="almacen">
+										<option value="0">Seleccione almacen</option>
+										<%
+										List<AlmacenDTO> almacenes = new AlmacenService().listaAlmacen();
+										for (AlmacenDTO almacen : almacenes) {
+										%>
+										<option value="<%=almacen.getId()%>">
+											<%=almacen.getCodigo()%></option>
+										<%
+										}
+										%>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-2">
+								<label for="usuario" class="col-sm-4 col-form-label">Usuario:</label>
+								<div class="col-sm-8">
+									<select class="form-select" name="cbo_usr" id=""usuario"">
+										<option value="0">Seleccione usuario</option>
+										<%
+										List<UsuarioDTO> usuarios = new UsuarioService().listaUsuario();
+										for (UsuarioDTO usuario : usuarios) {
+										%>
+										<option value="<%=usuario.getId()%>">
+											<%=usuario.getNombres() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno()%></option>
+										<%
+										}
+										%>
+									</select>
+								</div>
+							</div>
+							<div class="row mb-2">
+								<label for="fecha" class="col-sm-4 col-form-label">Fecha:</label>
+								<div class="col-sm-8">
+									<input type="date" class="form-select" name="txt_fec"
+										id="fecha">
+								</div>
+							</div>
+							<div class="row mb-2">
+								<div class="col">
+									<input type="submit" class="btn btn-success w-100"
+										value="Filtrar">
+								</div>
 							</div>
 						</div>
+					</form>
 				</div>
-			</form>
-			</div>
-			
+
 			</div>
 		</div>
 		<div class="row">
