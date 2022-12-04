@@ -1,8 +1,13 @@
 package dao;
 
 import interfaces.UniversidadDAO;
+import interfaces.UsuarioDAO;
+import interfaces.AlmacenDAO;
 import interfaces.EspecialidadDAO;
+import interfaces.EstadoDAO;
 import interfaces.IngenieroDAO;
+import interfaces.ProductoDAO;
+import interfaces.SolicitudDAO;
 
 public abstract class DAOFactory {
 	
@@ -15,6 +20,11 @@ public abstract class DAOFactory {
    public abstract IngenieroDAO getIngeniero();
    public abstract UniversidadDAO getUniversidad();
    public abstract EspecialidadDAO getEspecialidad();
+   public abstract AlmacenDAO getAlmacen();
+   public abstract EstadoDAO getEstado();
+   public abstract ProductoDAO getProducto();
+   public abstract SolicitudDAO getSolicitud();
+   public abstract UsuarioDAO getUsuario();
 
    public static DAOFactory getDAOFactory(int whichFactory) {
       switch(whichFactory) {
