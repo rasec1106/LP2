@@ -10,4 +10,5 @@ public interface UsuarioDAO {
 	public int actualizarUsuario(UsuarioDTO obj);
 	public int eliminarUsuario(int cod);
 	public UsuarioDTO buscarUsuario(int cod);
+	public UsuarioDTO loginUsuario(String usuario, String clave);
 }

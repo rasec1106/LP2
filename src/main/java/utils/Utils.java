@@ -1,10 +1,12 @@
 package utils;
 
 import java.util.ArrayList;
-import beans.IngenieroDTO;
+import beans.UsuarioDTO;
 
 public class Utils {
 	
+	public static UsuarioDTO currentUser = null;
+/*	
 	public static int ingenierosPorEspecialidad(ArrayList<IngenieroDTO> lista, int codEspecialidad) {
 		int contador = 0;
 		for(IngenieroDTO ing:lista) {
@@ -21,5 +23,13 @@ public class Utils {
 			}
 		}
 		return acumulador;
+	}
+	*/
+	public static UsuarioDTO getCurrentUser() {
+		return currentUser;
+	}
+	
+	public static void setCurrentUser(UsuarioDTO usuario) {
+		currentUser = usuario;
 	}
 }

@@ -3,6 +3,7 @@ package beans;
 public class SolicitudDTO {
 	private int id;
 	private String codigo;
+	private int idSolicitante;
 	private String motivo;;
 	private String fecha;
 	private int idAlmacen;
@@ -13,11 +14,12 @@ public class SolicitudDTO {
 		super();
 	}
 
-	public SolicitudDTO(int id, String codigo, String motivo, String fecha, int idAlmacen, int idUsuario,
+	public SolicitudDTO(int id, String codigo, int idSolicitante, String motivo, String fecha, int idAlmacen, int idUsuario,
 			int idEstado) {
 		super();
 		this.id = id;
 		this.codigo = codigo;
+		this.idSolicitante= idSolicitante;
 		this.motivo = motivo;
 		this.fecha = fecha;
 		this.idAlmacen = idAlmacen;
@@ -79,6 +81,14 @@ public class SolicitudDTO {
 
 	public void setIdEstado(int idEstado) {
 		this.idEstado = idEstado;
+	}
+
+	public int getIdSolicitante() {
+		return idSolicitante;
+	}
+
+	public void setIdSolicitante(int idSolicitante) {
+		this.idSolicitante = idSolicitante;
 	}
 	
 }

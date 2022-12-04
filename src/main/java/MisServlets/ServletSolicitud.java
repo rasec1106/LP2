@@ -3,27 +3,25 @@ package MisServlets;
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 
-import beans.IngenieroDTO;
+import beans.SolicitudDTO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import service.EspecialidadService;
-import service.IngenieroService;
+import service.SolicitudService;
 
 /**
- * Servlet implementation class ServletIngeniero
+ * Servlet implementation class ServletSolicitud
  */
-@WebServlet("/ServletIngeniero")
-public class ServletIngeniero extends HttpServlet {
+@WebServlet("/ServletSolicitud")
+public class ServletSolicitud extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    IngenieroService serviIngeniero = new IngenieroService();
-    EspecialidadService serviEspecialidad = new EspecialidadService();
+    SolicitudService serviSolicitud = new SolicitudService();
     
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletIngeniero() {
+    public ServletSolicitud() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -64,60 +62,58 @@ public class ServletIngeniero extends HttpServlet {
 	}
 
    private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      request.setAttribute("data", serviIngeniero.listaIngeniero());
-      // Mandamos la especialidad de Ing. De Sistemas que posee el codigo 1
-      request.setAttribute("especialidad", serviEspecialidad.buscaEspecialidad(1));
-      request.getRequestDispatcher("consulta-Herrera.jsp").forward(request, response);
+      request.setAttribute("data", serviSolicitud.listaSolicitud());
+      request.getRequestDispatcher("listarSolicitud.jsp").forward(request, response);
    }
    
    private void actualizar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {		   
-	      int cod, uni, esp;
-	      String nom, ape, dni;
-	      double sue;
-	      cod = Integer.parseInt(request.getParameter("txt_cod"));
-	      nom = request.getParameter("txt_nom");
-	      ape = request.getParameter("txt_ape");
-	      dni = request.getParameter("txt_dni");
-	      sue = Double.parseDouble(request.getParameter("txt_sue"));
-	      uni = Integer.parseInt(request.getParameter("cbo_uni"));
-	      esp = Integer.parseInt(request.getParameter("cbo_esp"));
-	      IngenieroDTO obj = new IngenieroDTO();
-	      obj.setCodigo(cod);
-	      obj.setNombre(nom);
-	      obj.setApellido(ape);
-	      obj.setDni(dni);
-	      obj.setSueldo(sue);
-	      obj.setCodUniversidad(uni);
-	      obj.setCodEspecialidad(esp);
-	      serviIngeniero.actualizaIngeniero(obj);
-	      request.setAttribute("message", "Se actualizo correctamente el registro");
-	      listar(request, response);
-	   }catch (Exception e) {
-		   request.setAttribute("message", "No se pudo actualizar el registro. "+e.getMessage());
-		   listar(request, response);		
-	   }
+		   int solicitante, usuario, almacen, estado;
+	      	String codigo, motivo, fecha;
+	      	codigo = request.getParameter("txt_cod");
+	      	motivo = request.getParameter("txt_mot");
+	      	fecha = request.getParameter("txt_fec");
+	      	solicitante = Integer.parseInt(request.getParameter("id_sol"));
+	      	usuario = Integer.parseInt(request.getParameter("cbo_usr"));
+	      	almacen = Integer.parseInt(request.getParameter("cbo_alm"));
+	      	estado = Integer.parseInt(request.getParameter("cbo_est"));
+	      	SolicitudDTO obj = new SolicitudDTO();
+	        obj.setCodigo(codigo);
+	        obj.setIdSolicitante(solicitante);
+	        obj.setMotivo(motivo);
+	        obj.setFecha(fecha);
+	        obj.setIdAlmacen(almacen);
+	        obj.setIdUsuario(usuario);
+	        obj.setIdEstado(estado);
+	        serviSolicitud.actualizaSolicitud(obj);
+	        request.setAttribute("message", "Se actualizo correctamente el registro");
+	        listar(request, response);
+	   	}catch (Exception e) {
+	   		request.setAttribute("message", "No se pudo actualizar el registro. "+e.getMessage());
+	   		listar(request, response);		
+	   	}
    }
    
    private void registrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {		   
-		   	int uni, esp;
-	      	String nom, ape, dni;
-	      	double sue;
-	      	nom = request.getParameter("txt_nom");
-	      	ape = request.getParameter("txt_ape");
-	      	dni = request.getParameter("txt_dni");
-	      	sue = Double.parseDouble(request.getParameter("txt_sue"));
-	      	uni = Integer.parseInt(request.getParameter("cbo_uni"));
-	      	esp = Integer.parseInt(request.getParameter("cbo_esp"));
-	      	IngenieroDTO obj = new IngenieroDTO();
-	      	obj.setNombre(nom);
-	      	obj.setApellido(ape);
-	      	obj.setDni(dni);
-	      	obj.setSueldo(sue);
-	      	obj.setCodUniversidad(uni);
-	      	obj.setCodEspecialidad(esp);
-	      	serviIngeniero.registraIngeniero(obj);
+		   	int solicitante, usuario, almacen, estado;
+	      	String codigo, motivo, fecha;
+	      	codigo = request.getParameter("txt_cod");
+	      	motivo = request.getParameter("txt_mot");
+	      	fecha = request.getParameter("txt_fec");
+	      	solicitante = Integer.parseInt(request.getParameter("id_sol"));
+	      	usuario = Integer.parseInt(request.getParameter("cbo_usr"));
+	      	almacen = Integer.parseInt(request.getParameter("cbo_alm"));
+	      	estado = Integer.parseInt(request.getParameter("cbo_est"));
+	      	SolicitudDTO obj = new SolicitudDTO();
+	        obj.setCodigo(codigo);
+	        obj.setIdSolicitante(solicitante);
+	        obj.setMotivo(motivo);
+	        obj.setFecha(fecha);
+	        obj.setIdAlmacen(almacen);
+	        obj.setIdUsuario(usuario);
+	        obj.setIdEstado(estado);
+	      	serviSolicitud.registraSolicitud(obj);
 	      	request.setAttribute("message", "Se creo correctamente el registro");
 	      	listar(request, response);
 	   }catch (Exception e) {
@@ -128,14 +124,14 @@ public class ServletIngeniero extends HttpServlet {
 
    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       int cod = Integer.parseInt(request.getParameter("cod"));
-      request.setAttribute("ingeniero", serviIngeniero.buscaIngeniero(cod));
-      request.getRequestDispatcher("actualizarIngeniero.jsp").forward(request, response);
+      request.setAttribute("Solicitud", serviSolicitud.buscaSolicitud(cod));
+      request.getRequestDispatcher("actualizarSolicitud.jsp").forward(request, response);
    }
    
    private void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   try {
 		   int cod = Integer.parseInt(request.getParameter("cod"));
-		   serviIngeniero.eliminaIngeniero(cod);
+		   serviSolicitud.eliminaSolicitud(cod);
 		   request.setAttribute("message", "Se elimino correctamente el registro");
 		   listar(request, response);
 	   }catch (Exception e) {
